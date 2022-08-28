@@ -18,5 +18,5 @@
 			}
         ]
     },
-    "schedule": ["before 12am on Sunday"]
+    "schedule": ["before 12am"]
 }
