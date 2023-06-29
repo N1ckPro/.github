@@ -3,7 +3,14 @@
 	"extends": ["config:base", ":semanticCommitTypeAll(chore)"],
 	"labels": ["dependencies"],
 	"npm": {
-		"rangeStrategy": "bump",
+		"lockFileMaintenance": {
+			"automerge": false,
+			"commitMessageAction": "yarn.lock updates",
+			"groupName": "yarn.lock updates",
+			"labels": ["dependencies"],
+			"enabled": true,
+			"schedule": ["after 5pm on the first day of the month"]
+		},
 		"packageRules": [
 			{
 				"automerge": true,
@@ -13,10 +20,17 @@
 				"groupName": "devDependencies (non-major)"
 			},
 			{
+				"labels": ["dependencies"],
+				"matchCurrentVersion": "!/^0/",
+				"matchDepTypes": ["dependencies"],
+				"matchUpdateTypes": ["minor"]
+			},
+			{
 				"matchDepTypes": ["engines"],
 				"enabled": false
 			}
-		]
+		],
+		"rangeStrategy": "bump"
 	},
 	"schedule": ["before 6pm"]
 }
