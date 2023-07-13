@@ -1,36 +1,33 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"extends": ["config:base", ":preserveSemverRanges", ":semanticCommitTypeAll(chore)"],
+	"extends": ["config:base", ":semanticCommitTypeAll(chore)", "schedule:monthly"],
 	"labels": ["dependencies"],
 	"npm": {
 		"lockFileMaintenance": {
 			"automerge": false,
 			"commitMessageAction": "yarn.lock updates",
-			"groupName": "yarn.lock updates",
-			"labels": ["dependencies"],
 			"enabled": true,
-			"schedule": ["after 5pm on the first day of the month"]
+            "extends": ["schedule:quarterly"],
+            "groupName": "yarn.lock updates"
 		},
 		"packageRules": [
 			{
 				"automerge": true,
+                "groupName": "devDependencies (non-major)",
 				"matchCurrentVersion": "!/^0/",
 				"matchDepTypes": ["devDependencies"],
-				"matchUpdateTypes": ["patch", "minor"],
-				"groupName": "devDependencies (non-major)"
+				"matchUpdateTypes": ["patch", "minor"]
 			},
 			{
 				"labels": ["dependencies"],
 				"matchCurrentVersion": "!/^0/",
-				"matchDepTypes": ["dependencies"],
 				"matchUpdateTypes": ["minor"]
 			},
 			{
-				"matchDepTypes": ["engines"],
-				"enabled": false
+                "enabled": false,
+				"matchDepTypes": ["engines"]
 			}
 		],
 		"rangeStrategy": "bump"
-	},
-	"schedule": ["before 6pm"]
+	}
 }
