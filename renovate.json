@@ -7,13 +7,13 @@
 			"automerge": false,
 			"commitMessageAction": "yarn.lock updates",
 			"enabled": true,
-            "extends": ["schedule:quarterly"],
-            "groupName": "yarn.lock updates"
+			"extends": ["schedule:quarterly"],
+			"groupName": "yarn.lock updates"
 		},
 		"packageRules": [
 			{
 				"automerge": true,
-                "groupName": "devDependencies (non-major)",
+				"groupName": "devDependencies (non-major)",
 				"matchCurrentVersion": "!/^0/",
 				"matchDepTypes": ["devDependencies"],
 				"matchUpdateTypes": ["patch", "minor"]
@@ -24,7 +24,7 @@
 				"matchUpdateTypes": ["minor"]
 			},
 			{
-                "enabled": false,
+				"enabled": false,
 				"matchDepTypes": ["engines"]
 			}
 		],
