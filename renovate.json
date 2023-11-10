@@ -33,9 +33,25 @@
 				]
 			},
 			{
-				"matchCurrentVersion": "!/^0/",
+				"automerge": true,
+				"groupName": "dependencies (patch)",
+				"labels": [
+					"dependencies"
+				],
+				"matchDepTypes": [
+					"dependencies"
+				],
 				"matchUpdateTypes": [
-					"minor"
+					"patch"
+				]
+			},
+			{
+				"matchDepTypes": [
+					"dependencies",
+					"devDependencies"
+				],
+				"matchUpdateTypes": [
+					"major"
 				]
 			},
 			{
